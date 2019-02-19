@@ -10,11 +10,16 @@
   <body>
     <div class="row">
       <div class="col-sm-4">
-        <div class="form-group">
-          <label for="username">GitHub Username:</label>
-          <input type="text" class="form-control" id="username" placeholder="eperezcosano">
-          <button type="button" class="btn btn-primary">Show Repositories</button>
-        </div>
+        <h1>Search</h1>
+          <div class="input-group">
+
+            <input type="text" class="form-control" id="username" placeholder="GitHub Username">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
       </div>
       <div class="col-sm-8">
         <table class="table table-striped">
@@ -32,6 +37,12 @@
     </div>
     <script>
       $(document).ready(function () {
+        $('#username').focus();
+        $('#username').keypress(function (e) {
+          if (e.which == 13) {
+            $('button').click();
+          }
+        });
         $('button').click(function () {
           $('table tbody').empty();
           var username = $('#username').val();
